@@ -1,0 +1,51 @@
+=h-nav
+  +clearfix
+  list-style-type: none
+  li 
+    float: left
+=v-nav  
+  list-style-type: none
+  li
+    float: none 
+=justify-nav
+  ul
+    list-style-type: none
+  li
+    display: table-cell
+    width: 1%
+
+=placeholder
+  &::-webkit-input-placeholder 
+    @content
+  &:-moz-placeholder           
+    @content
+  &::-moz-placeholder          
+    @content
+  &:-ms-input-placeholder      
+    @content 
+
+=text-overflow
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+$smallphone-width: 400px  
+$phone-width: 768px
+$tablet-width: 992px
+$desktop-width: 1200px  
+
+=desktop 
+  @media (min-width: $desktop-width)
+    @content
+=tablet 
+  @media (min-width: $phone-width) and (max-width: $desktop-width - 1px)
+    @content   
+=tablet-portrait 
+  @media (min-width: $phone-width) and (max-width: $tablet-width - 1px) 
+    @content    
+=phone 
+  @media (max-width: $phone-width - 1px) 
+    @content
+=smallphone 
+  @media (max-width: $smallphone-width - 1px) 
+    @content
