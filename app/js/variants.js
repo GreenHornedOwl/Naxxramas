@@ -98,7 +98,7 @@ HandleVariants = function(list){
 	// Add Event Listeners
 	_.map(selects, function(value, index){
 		var $target = $('[name="'+ value.Name +'"]');			
-		$target.on("change", function() { 
+		$target.on("change", function() { 			
 			var option = getCurrentOption(index); 
 			var optionString = _.map(option).join(".");	
 			
@@ -122,6 +122,7 @@ HandleVariants = function(list){
 			
 			selectVariant(option);
 			filterOptions(option);
+			$('select').selectpicker("refresh");
 
 		});	
 	});
@@ -134,11 +135,13 @@ HandleVariants = function(list){
 	function getSelects() {
 		// Get the variant selects
 		var selects = [];
+		var index = 0;
 		$("#variants select").each(function(){
 			var select = {};
 			select.Name = $(this).attr("name");
-			select.Index = $(this).index();
+			select.Index = index;
 			selects.push(select);
+			index++;
 		});	
 		return selects;
 	}
@@ -220,5 +223,8 @@ HandleVariants = function(list){
 
 
 $(function(){	
+
 	HandleVariants(variants);
+	$('select').selectpicker();
+
 });
